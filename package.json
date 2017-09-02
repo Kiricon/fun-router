@@ -1,0 +1,27 @@
+{
+  "name": "fun-router",
+  "version": "1.0.0",
+  "description": "A HTML custome element implementing a router",
+  "main": "fun-router.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kiricon/fun-router.git"
+  },
+  "keywords": [
+    "router",
+    "custom",
+    "element",
+    "html",
+    "vanilla",
+    "url"
+  ],
+  "author": "Dominic Valenciana",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Kiricon/fun-router/issues"
+  },
+  "homepage": "https://github.com/Kiricon/fun-router#readme"
+}
