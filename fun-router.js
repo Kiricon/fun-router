@@ -17,6 +17,7 @@ class FunRouter extends HTMLElement {
         super();
 
         // add any initial variables here
+        this.routes = [];
     }
 
     /**
@@ -25,7 +26,25 @@ class FunRouter extends HTMLElement {
      * cases.
      */
     connectedCallback() {
-        
+        const self = this;
+        window.addEventListener('popstate', () => {
+            self.changeRoute()
+        });
+        this.routes = this.children;
+        this.changeRoute();
+    }
+
+    changeRoute() {
+        const path = window.location.pathname;
+
+        for(let i = 0; i < this.routes.length; i++) {
+            let route = this.routes[i];
+            if(route.getAttribute('path') !== path) {
+                route.style.display = 'none';
+            }else {
+                route.style.display = 'block';
+            }
+        }
     }
 
     /**
@@ -86,6 +105,7 @@ class FunLink extends HTMLElement {
     click() {
         const href = this.getAttribute('href') || '';
         history.pushState(null, '', href);
+        window.dispatchEvent(new Event('popstate'));
     }
 
     /**
