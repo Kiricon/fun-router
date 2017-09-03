@@ -43,7 +43,39 @@ class FunRouter extends HTMLElement {
     }
 
     changeRoute() {
+        let path = window.location.pathname.split('/');
 
+        let route = this.routes;
+        let selectedElement = null;
+        let props = {};
+
+        for(let i = 1; i < path.length; i++) {
+            let pathValue = path[i];
+            
+            if(route[pathValue] === undefined) {
+                if(route["*"] !== undefined) {
+                    props[route["*"]._arg] = pathValue;
+                    pathValue = "*";
+
+                }else {
+                    selectedElement = "404";
+                    break;
+                }
+            }
+
+            if(i === (path.length-1)) {
+                selectedElement = route[pathValue]._element;
+            }else {
+                route = route[pathValue];
+            }
+        }
+
+        if(selectedElement !== "404") {
+            for(let prop in props) {
+                selectedElement.setAttribute(prop, props[prop]);
+            }
+            this.displayRoute(selectedElement);
+        }
         
     }
 
@@ -67,7 +99,7 @@ class FunRouter extends HTMLElement {
                 }
 
                 if(x === (pathArr.length-1)) {
-                    element = this.children[1];
+                    element = this.children[i];
                 }
 
                 routes[name] = new Route(element, arg);
@@ -76,6 +108,16 @@ class FunRouter extends HTMLElement {
 
             }
 
+        }
+    }
+
+    displayRoute(element) {
+        for(let i = 0; i < this.children.length; i++) {
+            if(this.children[i] === element) {
+                this.children[i].style.display = "block";
+            }else {
+                this.children[i].style.display = "none";
+            }
         }
     }
 
