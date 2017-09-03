@@ -1,3 +1,10 @@
+class Route {
+    constructor(element, arg) {
+        this._element = element;
+        this._arg = arg;
+    }
+}
+
 /**
  * This is the class that controls each instance of your custom element.
  */
@@ -30,20 +37,45 @@ class FunRouter extends HTMLElement {
         window.addEventListener('popstate', () => {
             self.changeRoute()
         });
-        this.routes = this.children;
+        this.buildRoutes();
+        console.log(this.routes);
         this.changeRoute();
     }
 
     changeRoute() {
-        const path = window.location.pathname;
 
-        for(let i = 0; i < this.routes.length; i++) {
-            let route = this.routes[i];
-            if(route.getAttribute('path') !== path) {
-                route.style.display = 'none';
-            }else {
-                route.style.display = 'block';
+        
+    }
+
+    buildRoutes() {
+        this.routes = {};
+        for(let i = 0; i < this.children.length; i++) {
+            if(!this.children[i].hasAttribute('path')) {
+                continue;
             }
+
+            let pathArr = this.children[i].getAttribute('path').split('/');
+            let routes = this.routes;
+            for(let x = 1; x < pathArr.length; x++) {
+                let name = pathArr[x];
+                let arg = null;
+                let element = null;
+
+                if(name[0] === ':') {
+                    arg = name.substr(1);
+                    name = '*';
+                }
+
+                if(x === (pathArr.length-1)) {
+                    element = this.children[1];
+                }
+
+                routes[name] = new Route(element, arg);
+
+                routes = routes[name];
+
+            }
+
         }
     }
 
@@ -113,7 +145,7 @@ class FunLink extends HTMLElement {
      * the DOM. Disconnect any listeners or anything else here.
      */
     disconnectedCallback() {
-
+        this.removeEventListener('click', this.click);
     }
 
     /**
