@@ -11,6 +11,18 @@
                 margin: 0px;
                 font-family: sans-serif;
                 background-color: #eee;
+                height: 100%;
+                width: 100%;
+            }
+
+            main {
+                padding: 100px 20px 0px 20px;
+                display: block;
+            }
+
+            :root {
+                --primary-color: #FFC107;
+                --secondary-color: #E91E63;
             }
         </style>
     </head>
@@ -18,19 +30,20 @@
     <body>
         <top-nav>
             <fun-tabs>
-                <fun-tab>Home</fun-tab>
-                <fun-tab>About</fun-tab>
+                <fun-link href="/">
+                    <fun-tab>Home</fun-tab>
+                </fun-link>
+                <fun-link href="/about">
+                    <fun-tab>About</fun-tab>
+                </fun-link>
             </fun-tabs>
         </top-nav>
-        <fun-link href="/">index</fun-link>
-        <fun-link href="/hotdog">hotdog</fun-link>
-        <fun-link href="/input/wutang">input</fun-link>
-        <fun-link href="/input/bloop">bloop</fun-link>
-        <fun-router>
-            <div path="/">Index</div>
-            <div path="/hotdog">Hotdog</div>
-            <input path="/input/:value" type="text" />
-        </fun-router>
+        <main>
+            <fun-router>
+                <div path="/">Home Page</div>
+                <div path="/about">About Page</div>
+            </fun-router>
+        </main>
         <script src="fun-router.js"></script>
         <script src="node_modules/top-nav/top-nav.js"></script>
         <script src="node_modules/fun-tabs/fun-tabs.js"></script>
