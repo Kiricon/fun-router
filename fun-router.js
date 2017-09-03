@@ -1,3 +1,4 @@
+(function(){
 class Route {
     constructor(element, arg) {
         this._element = element;
@@ -204,3 +205,4 @@ class FunLink extends HTMLElement {
 }
 
 customElements.define("fun-link", FunLink);
+})();

@@ -8,7 +8,7 @@
         <style>
             body, html {
                 padding: 0px;
-                margin: 20px;
+                margin: 0px;
                 font-family: sans-serif;
                 background-color: #eee;
             }
@@ -16,6 +16,12 @@
     </head>
 
     <body>
+        <top-nav>
+            <fun-tabs>
+                <fun-tab>Home</fun-tab>
+                <fun-tab>About</fun-tab>
+            </fun-tabs>
+        </top-nav>
         <fun-link href="/">index</fun-link>
         <fun-link href="/hotdog">hotdog</fun-link>
         <fun-link href="/input/wutang">input</fun-link>
@@ -26,5 +32,7 @@
             <input path="/input/:value" type="text" />
         </fun-router>
         <script src="fun-router.js"></script>
+        <script src="node_modules/top-nav/top-nav.js"></script>
+        <script src="node_modules/fun-tabs/fun-tabs.js"></script>
     </body>
 </html>

@@ -23,5 +23,9 @@
   "bugs": {
     "url": "https://github.com/Kiricon/fun-router/issues"
   },
-  "homepage": "https://github.com/Kiricon/fun-router#readme"
+  "homepage": "https://github.com/Kiricon/fun-router#readme",
+  "devDependencies": {
+    "fun-tabs": "^1.0.0",
+    "top-nav": "^1.0.1"
+  }
 }
