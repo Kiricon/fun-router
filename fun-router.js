@@ -38,7 +38,6 @@ class FunRouter extends HTMLElement {
             self.changeRoute()
         });
         this.buildRoutes();
-        console.log(this.routes);
         this.changeRoute();
     }
 
