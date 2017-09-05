@@ -34,3 +34,34 @@ require("fun-router");
         <foo-bar path="/name/:first/:last"></foo-bar>
     </fun-router>
 ```
+and for making links that don't redirect
+
+```HTML
+<fun-link href="/">
+    <fun-tab>Home</fun-tab>
+</fun-link>
+<fun-link href="/about">
+    <fun-tab>About</fun-tab>
+</fun-link>
+```
+
+All elements contained in the `<fun-router>` tags can specify the path that they are to dispaly on by adding the attribute `path` to the element.
+
+For path/url variables/arguments simple denote the by prceding the word with a `:`. 
+
+Url arguments will be applied to their element as an attribute. 
+
+Example:
+```HTML
+<fun-router>
+    <div path="/name/:foo/:bar"></div>
+</fun-router>
+```
+```
+http://example.com/name/john/doe
+```
+
+will display the div when visiting that url and apply two attriburtes to the element
+```HTML
+<div path="/name/:foo/:bar" foo="john" bar="doe"></div>
+```
