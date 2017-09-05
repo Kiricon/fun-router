@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/Kiricon/fun-router#readme",
   "devDependencies": {
-    "fun-tabs": "^1.0.1",
+    "fun-tabs": "^1.0.3",
     "top-nav": "^1.0.2"
   }
 }

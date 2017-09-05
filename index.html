@@ -20,6 +20,14 @@
                 display: block;
             }
 
+            fun-router {
+                background: white;
+                display: table;
+                width: calc( 100% - 40px);
+                padding: 20px;
+                box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+            }
+
             :root {
                 --primary-color: #FFC107;
                 --secondary-color: #E91E63;
@@ -36,15 +44,24 @@
                 <fun-link href="/about">
                     <fun-tab>About</fun-tab>
                 </fun-link>
+                <fun-link href="/name/foo/bar">
+                    <fun-tab>FooBar</fun-tab>
+                </fun-link>
             </fun-tabs>
         </top-nav>
         <main>
             <fun-router>
-                <div path="/">Home Page</div>
-                <div path="/about">About Page</div>
+                <home-page path="/"></home-page>
+                <div path="/about">
+                    <div>url: /about </div>
+                    <h4>About Page</h4>
+                </div>
+                <foo-bar path="/name/:first/:last"></foo-bar>
             </fun-router>
         </main>
         <script src="fun-router.js"></script>
+        <script src="demo/HomePage.js"></script>
+        <script src="demo/FooBar.js"></script>
         <script src="node_modules/top-nav/top-nav.js"></script>
         <script src="node_modules/fun-tabs/fun-tabs.js"></script>
     </body>
