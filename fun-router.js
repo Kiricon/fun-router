@@ -76,6 +76,10 @@ class FunRouter extends HTMLElement {
             }
             this.displayRoute(selectedElement);
         }
+
+        if(this.onRouteChange !== null) {
+            this.onRouteChange(selectedElement)
+        }
         
     }
 
