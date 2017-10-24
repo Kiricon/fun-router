@@ -1,6 +1,6 @@
 {
   "name": "fun-router",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A HTML custome element implementing a router",
   "main": "fun-router.js",
   "scripts": {

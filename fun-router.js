@@ -77,7 +77,7 @@ class FunRouter extends HTMLElement {
             this.displayRoute(selectedElement);
         }
 
-        if(this.onRouteChange !== null) {
+        if(typeof this.onRouteChange === 'function') {
             this.onRouteChange(selectedElement)
         }
         
