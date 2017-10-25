@@ -1,8 +1,9 @@
 (function(){
 class Route {
-    constructor(element, arg) {
+    constructor(element, arg, index) {
         this._element = element;
         this._arg = arg;
+        this._index = index;
     }
 }
 
@@ -47,6 +48,7 @@ class FunRouter extends HTMLElement {
 
         let route = this.routes;
         let selectedElement = null;
+        let selectedIndex = null;
         let props = {};
 
         for(let i = 1; i < path.length; i++) {
@@ -65,6 +67,7 @@ class FunRouter extends HTMLElement {
 
             if(i === (path.length-1)) {
                 selectedElement = route[pathValue]._element;
+                selectedIndex = route[pathValue]._index;
             }else {
                 route = route[pathValue];
             }
@@ -75,6 +78,7 @@ class FunRouter extends HTMLElement {
                 selectedElement.setAttribute(prop, props[prop]);
             }
             this.displayRoute(selectedElement);
+            this.setAttribute('selected-route-index', selectedIndex)
         }
 
         if(typeof this.onRouteChange === 'function') {
@@ -106,7 +110,7 @@ class FunRouter extends HTMLElement {
                     element = this.children[i];
                 }
 
-                routes[name] = new Route(element, arg);
+                routes[name] = new Route(element, arg, i);
 
                 routes = routes[name];
 
